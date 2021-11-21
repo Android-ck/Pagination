@@ -1,15 +1,19 @@
 package com.zerir.networking.data
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.zerir.networking.domain.Repository
-import com.zerir.networking.domain.model.PlanetsResponse
-import com.zerir.networking.network.AsyncCall
-import com.zerir.networking.network.Resource
-import com.zerir.networking.network.retrofit.PlanetsApi
+import com.zerir.networking.domain.model.Planet
+import kotlinx.coroutines.flow.Flow
 
-class RepositoryImpl(private val planetsApi: PlanetsApi) : Repository, AsyncCall {
+class RepositoryImpl(private val planetPagingResource: PlanetPagingResource) : Repository {
 
-    override suspend fun getAllPlanets(): Resource<PlanetsResponse> = invokeAsyncCall {
-        planetsApi.getPlanets()
+    override fun getAllPlanets(): Flow<PagingData<Planet>> {
+        return Pager(
+            config = PagingConfig(pageSize = 10),
+            pagingSourceFactory = { planetPagingResource }
+        ).flow
     }
 
 }

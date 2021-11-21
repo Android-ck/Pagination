@@ -2,13 +2,13 @@ package com.zerir.networking.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zerir.networking.databinding.RowPlanetItemBinding
 import com.zerir.networking.domain.model.Planet
 
-class PlanetAdapter : ListAdapter<Planet, RecyclerView.ViewHolder>(ImageDiffUtils()) {
+class PlanetAdapter : PagingDataAdapter<Planet, RecyclerView.ViewHolder>(ImageDiffUtils()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder.from(parent)
@@ -34,7 +34,7 @@ class PlanetAdapter : ListAdapter<Planet, RecyclerView.ViewHolder>(ImageDiffUtil
             }
         }
 
-        fun bind(planet: Planet) {
+        fun bind(planet: Planet?) {
             binding.planet = planet
         }
     }

@@ -1,10 +1,11 @@
 package com.zerir.networking.domain
 
-import com.zerir.networking.domain.model.PlanetsResponse
-import com.zerir.networking.network.Resource
+import androidx.paging.PagingData
+import com.zerir.networking.domain.model.Planet
+import kotlinx.coroutines.flow.Flow
 
 interface Repository {
 
-    suspend fun getAllPlanets(): Resource<PlanetsResponse>
+    fun getAllPlanets(): Flow<PagingData<Planet>>
 
 }
