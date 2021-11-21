@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Networking</string>
+    <string name="connection_lost">Connection Lost</string>
+    <string name="name">Name</string>
+    <string name="population">Population</string>
+    <string name="surface_water">Surface Water</string>
+    <string name="terrain">Terrain</string>
+    <string name="gravity">Gravity</string>
+    <string name="climate">Climate</string>
+    <string name="diameter">Diameter</string>
+    <string name="orbital_period">Orbital Period</string>
+    <string name="rotation_period">Rotation Period</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="dismiss">Dismiss</string>
+</resources>
