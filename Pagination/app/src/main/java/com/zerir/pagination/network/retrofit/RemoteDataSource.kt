@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 class RemoteDataSource {
 
     companion object {
-        private const val BASE_URL = "https://swapi.dev/api/"
+        private const val BASE_URL = "https://api.instantwebtools.net/v1/"
     }
 
     fun <Api> buildApi(api: Class<Api>): Api {

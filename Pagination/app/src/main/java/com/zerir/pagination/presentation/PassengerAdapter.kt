@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.zerir.pagination.databinding.RowPlanetItemBinding
-import com.zerir.pagination.domain.model.Planet
+import com.zerir.pagination.databinding.RowPassengerItemBinding
+import com.zerir.pagination.domain.model.Passenger
 
-class PlanetAdapter : PagingDataAdapter<Planet, RecyclerView.ViewHolder>(ImageDiffUtils()) {
+class PassengerAdapter : PagingDataAdapter<Passenger, RecyclerView.ViewHolder>(PassengerDiffUtils()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder.from(parent)
@@ -23,31 +23,31 @@ class PlanetAdapter : PagingDataAdapter<Planet, RecyclerView.ViewHolder>(ImageDi
         }
     }
 
-    class ViewHolder(private val binding: RowPlanetItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: RowPassengerItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         companion object {
             fun from(parent: ViewGroup) : ViewHolder {
                 val context = parent.context
                 val layoutInflater = LayoutInflater.from(context)
-                val binding = RowPlanetItemBinding.inflate(layoutInflater, parent, false)
+                val binding = RowPassengerItemBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }
 
-        fun bind(planet: Planet?) {
-            binding.planet = planet
+        fun bind(passenger: Passenger?) {
+            binding.passenger = passenger
         }
     }
 
 }
 
-class ImageDiffUtils : DiffUtil.ItemCallback<Planet>() {
+class PassengerDiffUtils : DiffUtil.ItemCallback<Passenger>() {
 
-    override fun areItemsTheSame(oldItem: Planet, newItem: Planet): Boolean {
-        return oldItem.url == newItem.url
+    override fun areItemsTheSame(oldItem: Passenger, newItem: Passenger): Boolean {
+        return oldItem._id == newItem._id
     }
 
-    override fun areContentsTheSame(oldItem: Planet, newItem: Planet): Boolean {
+    override fun areContentsTheSame(oldItem: Passenger, newItem: Passenger): Boolean {
         return oldItem == newItem
     }
 

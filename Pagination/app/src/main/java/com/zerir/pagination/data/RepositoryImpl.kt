@@ -4,15 +4,20 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.zerir.pagination.domain.Repository
-import com.zerir.pagination.domain.model.Planet
+import com.zerir.pagination.domain.model.Passenger
 import kotlinx.coroutines.flow.Flow
 
-class RepositoryImpl(private val planetPagingResource: PlanetPagingResource) : Repository {
+class RepositoryImpl(private val passengerPagingResource: PassengerPagingResource) : Repository {
 
-    override fun getAllPlanets(): Flow<PagingData<Planet>> {
+    override fun getAllPassengers(): Flow<PagingData<Passenger>> {
         return Pager(
-            config = PagingConfig(pageSize = 10),
-            pagingSourceFactory = { planetPagingResource }
+            config = PagingConfig(
+                pageSize = PassengerPagingResource.SIZE_OF_PAGE,
+                maxSize = PassengerPagingResource.MAX_LENGTH_OF_ITEMS,
+                initialLoadSize = PassengerPagingResource.SIZE_OF_PAGE,
+                enablePlaceholders = false,
+            ),
+            pagingSourceFactory = { passengerPagingResource }
         ).flow
     }
 

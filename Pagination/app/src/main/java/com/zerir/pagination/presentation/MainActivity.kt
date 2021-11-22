@@ -2,17 +2,18 @@ package com.zerir.pagination.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.google.android.material.snackbar.Snackbar
 import com.zerir.pagination.R
-import com.zerir.pagination.data.PlanetPagingResource
+import com.zerir.pagination.data.PassengerPagingResource
 import com.zerir.pagination.data.RepositoryImpl
 import com.zerir.pagination.databinding.ActivityMainBinding
 import com.zerir.pagination.network.NetworkConnection
-import com.zerir.pagination.network.retrofit.PlanetsApi
+import com.zerir.pagination.network.retrofit.PassengersApi
 import com.zerir.pagination.network.retrofit.RemoteDataSource
 import com.zerir.pagination.utils.LoadingDialog
 import com.zerir.pagination.utils.Notify
@@ -23,12 +24,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels {
-        val planetsApi = RemoteDataSource().buildApi(PlanetsApi::class.java)
-        val planetPagingResource = PlanetPagingResource(planetsApi)
-        MainViewModel.Factory(RepositoryImpl(planetPagingResource), planetAdapter, NetworkConnection())
+        val planetsApi = RemoteDataSource().buildApi(PassengersApi::class.java)
+        val planetPagingResource = PassengerPagingResource(planetsApi)
+        MainViewModel.Factory(RepositoryImpl(planetPagingResource), passengerAdapter, NetworkConnection())
     }
 
-    private val planetAdapter by lazy { PlanetAdapter() }
+    private val passengerAdapter by lazy { PassengerAdapter() }
 
     private val loadingDialog = LoadingDialog()
     private val notify = Notify()
@@ -43,11 +44,12 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             viewModel.planets.collectLatest { data ->
-                planetAdapter.submitData(data)
+                passengerAdapter.submitData(data)
             }
         }
 
-        planetAdapter.addLoadStateListener { loadState ->
+        passengerAdapter.addLoadStateListener { loadState ->
+            //refresh for first time loading, append for every time data added
             showLoader(loadState.refresh is LoadState.Loading)
 
             val error: LoadState.Error? = when {
@@ -70,6 +72,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleError(throwable: Throwable?) {
         if (throwable == null) return
+        Log.e("THROW", throwable.message.toString())
         val cause = if(throwable.message.isNullOrBlank()) "" else "\n-> ${throwable.message}"
         val message = "${getString(R.string.something_went_wrong)}$cause"
         notify.showSnackBar(
