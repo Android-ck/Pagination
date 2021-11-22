@@ -1,9 +1,9 @@
-package com.zerir.networking.presentation
+package com.zerir.pagination.presentation
 
 import androidx.lifecycle.*
 import androidx.paging.cachedIn
-import com.zerir.networking.domain.Repository
-import com.zerir.networking.network.NetworkConnection
+import com.zerir.pagination.domain.Repository
+import com.zerir.pagination.network.NetworkConnection
 
 class MainViewModel(
     private val repository: Repository,

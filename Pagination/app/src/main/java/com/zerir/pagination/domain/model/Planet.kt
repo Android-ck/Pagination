@@ -1,4 +1,4 @@
-package com.zerir.networking.domain.model
+package com.zerir.pagination.domain.model
 
 data class Planet(
     val climate: String = "",

@@ -1,4 +1,4 @@
-package com.zerir.networking.network
+package com.zerir.pagination.network
 
 sealed class Resource<out T>(
     val data: T? = null,

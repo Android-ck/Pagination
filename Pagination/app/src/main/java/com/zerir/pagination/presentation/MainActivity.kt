@@ -1,4 +1,4 @@
-package com.zerir.networking.presentation
+package com.zerir.pagination.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,15 +7,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.google.android.material.snackbar.Snackbar
-import com.zerir.networking.R
-import com.zerir.networking.data.PlanetPagingResource
-import com.zerir.networking.data.RepositoryImpl
-import com.zerir.networking.databinding.ActivityMainBinding
-import com.zerir.networking.network.NetworkConnection
-import com.zerir.networking.network.retrofit.PlanetsApi
-import com.zerir.networking.network.retrofit.RemoteDataSource
-import com.zerir.networking.utils.LoadingDialog
-import com.zerir.networking.utils.Notify
+import com.zerir.pagination.R
+import com.zerir.pagination.data.PlanetPagingResource
+import com.zerir.pagination.data.RepositoryImpl
+import com.zerir.pagination.databinding.ActivityMainBinding
+import com.zerir.pagination.network.NetworkConnection
+import com.zerir.pagination.network.retrofit.PlanetsApi
+import com.zerir.pagination.network.retrofit.RemoteDataSource
+import com.zerir.pagination.utils.LoadingDialog
+import com.zerir.pagination.utils.Notify
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -50,10 +50,10 @@ class MainActivity : AppCompatActivity() {
         planetAdapter.addLoadStateListener { loadState ->
             showLoader(loadState.refresh is LoadState.Loading)
 
-            val error = when {
+            val error: LoadState.Error? = when {
                 loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
                 loadState.append is LoadState.Error -> loadState.append as LoadState.Error
-                //loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+                loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
                 else -> null
             }
             handleError(error?.error)

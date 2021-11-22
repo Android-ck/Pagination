@@ -1,4 +1,4 @@
-package com.zerir.networking
+package com.zerir.pagination
 
 import org.junit.Test
 

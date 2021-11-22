@@ -1,4 +1,4 @@
-package com.zerir.networking.utils
+package com.zerir.pagination.utils
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView

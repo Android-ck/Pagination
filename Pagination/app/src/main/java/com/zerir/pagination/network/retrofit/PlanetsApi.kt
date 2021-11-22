@@ -1,6 +1,6 @@
-package com.zerir.networking.network.retrofit
+package com.zerir.pagination.network.retrofit
 
-import com.zerir.networking.domain.model.PlanetsResponse
+import com.zerir.pagination.domain.model.PlanetsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

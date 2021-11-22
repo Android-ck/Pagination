@@ -1,6 +1,4 @@
-package com.zerir.networking.domain.model
-
-import com.zerir.networking.domain.model.Planet
+package com.zerir.pagination.domain.model
 
 data class PlanetsResponse(
     val count: Int = 0,

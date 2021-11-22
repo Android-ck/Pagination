@@ -1,4 +1,4 @@
-package com.zerir.networking.network
+package com.zerir.pagination.network
 
 import android.content.Context
 import android.net.ConnectivityManager

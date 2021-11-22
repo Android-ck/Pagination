@@ -1,6 +1,6 @@
-package com.zerir.networking.network.retrofit
+package com.zerir.pagination.network.retrofit
 
-import com.zerir.networking.BuildConfig
+import com.zerir.pagination.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

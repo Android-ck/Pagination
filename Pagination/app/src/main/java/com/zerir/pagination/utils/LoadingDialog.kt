@@ -1,4 +1,4 @@
-package com.zerir.networking.utils
+package com.zerir.pagination.utils
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.zerir.networking.R
+import com.zerir.pagination.R
 
 class LoadingDialog : DialogFragment(R.layout.view_loading) {
 

@@ -1,9 +1,9 @@
-package com.zerir.networking.data
+package com.zerir.pagination.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.zerir.networking.domain.model.Planet
-import com.zerir.networking.network.retrofit.PlanetsApi
+import com.zerir.pagination.domain.model.Planet
+import com.zerir.pagination.network.retrofit.PlanetsApi
 
 class PlanetPagingResource(private val planetsApi: PlanetsApi) :
     PagingSource<Int, Planet>() {

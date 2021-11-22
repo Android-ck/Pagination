@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.zerir.networking.presentation.MainViewModel" />
+            type="com.zerir.pagination.presentation.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

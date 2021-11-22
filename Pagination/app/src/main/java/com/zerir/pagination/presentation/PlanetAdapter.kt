@@ -1,12 +1,12 @@
-package com.zerir.networking.presentation
+package com.zerir.pagination.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.zerir.networking.databinding.RowPlanetItemBinding
-import com.zerir.networking.domain.model.Planet
+import com.zerir.pagination.databinding.RowPlanetItemBinding
+import com.zerir.pagination.domain.model.Planet
 
 class PlanetAdapter : PagingDataAdapter<Planet, RecyclerView.ViewHolder>(ImageDiffUtils()) {
 
