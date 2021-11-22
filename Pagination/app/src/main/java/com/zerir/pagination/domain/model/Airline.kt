@@ -8,5 +8,5 @@ data class Airline(
     val logo: String = "",
     val name: String = "",
     val slogan: String = "",
-    val website: String
+    val website: String = "",
 )
